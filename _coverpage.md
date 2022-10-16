@@ -9,7 +9,7 @@
 - 4K !!
 
 [GitHub](https://github.com/EpitechPromo2025/B-CPP-500-NCY-5-1-rtype-jules.magyari)
-[Get Started](/?id=welcome-sir)
+[Get Started](/?id=r-type-project)
 
 <!-- background image -->
 ![](media/R-TYPE.jpg)

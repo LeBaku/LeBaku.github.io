@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
 * [RTYPE](/)
-* [Networking](/Networking/ "Networking")
-* [ECS](/ECS/ "The ECS")
-* [Game](/Game/ "The Game")
+* [Networking](/EN/Networking/ "The Networking")
+* [ECS](/EN/ECS/ "The ECS")
+* [Game](/EN/Game/ "The Game")

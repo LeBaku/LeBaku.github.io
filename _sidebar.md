@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
 * [RTYPE](/)
-* [Networking](/Networking/ "The Networking")
-* [ECS](/ECS/ "The ECS")
-* [Game](/Game/ "The Game")
+* [Networking](/Networking/?id=networking "The Networking")
+* [ECS](/ECS/?id=ecs "The ECS")
+* [Game](/Game/?id=game "The Game")

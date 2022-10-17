@@ -12,4 +12,10 @@ You can then add entities using <b>manager.AddEntity()</b> and you attach compon
     <li>To create new systems you need the new system to inherit from System.</li>
 </ul>
 
+# Diagram of ECS
 
+![](../media/Diagram_ECS.png)
+
+# Add your own Event
+
+![](../media/myEvent.png)

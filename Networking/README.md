@@ -10,15 +10,15 @@ With this methode we can build a server using IPC (Inter Process Communication) 
 
 The goal of our networking is give players the possibility to host their parties and play together.
 
-#### SERVER USAGE
+## SERVER USAGE
 
 You must disable the firewall on the machine running the server in order to enable the communinications between multiple computers on the same network using IPv4.  
 
-    On Fedora : 
+#### On Fedora : 
 
 > sudo systemctl stop firewalld
 
-    On Ubuntu :
+#### On Ubuntu :
 
 > sudo ufw disable
 
@@ -28,7 +28,7 @@ You can start the server on any unused port using the command :
 
 -----------------------------------------------------------------------------------
 
-#### CLIENT USAGE
+## CLIENT USAGE
 
 If you want to play with an other computer on the same Network, you want to know the IPv4 of the machine running the server, you can get it by running the following command on the server's machine :
 

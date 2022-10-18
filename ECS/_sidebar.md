@@ -7,5 +7,5 @@
 ** [Intro](/ECS/?id=ecs)
 ** [Diagram of ECS](/ECS/?id=diagram-of-ecs)
 ** [CustomEvents](/ECS/?id=add-your-own-event)
-** [Exemples NON](/ECS/?id=examples)
+** [Exemples](/ECS/?id=examples)
 * [Game](/Game/?id=game "The Game")

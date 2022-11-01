@@ -44,5 +44,54 @@ Now in order to start the client you'll have to run the command :
 
 ## NETWORK PROTOCOL
 
-![](../media/diagrom.drawio.png)
+How to send and receive a structure ?
 
+Server:
+```
+// Define a structure
+typedef struct  __attribute__ ((packed)) test_s {
+	int code;
+	float info1;
+	char info2[100];
+} test_t;
+
+.
+.
+.
+
+char info2[] = "testInfo2";
+test_t test {1, 2.5};
+
+// memcpy for char[]
+memcpy ( test.c, info2, strlen(info2)+1 );
+
+socket_.async_send_to(boost::asio::buffer(&test, sizeof(test)), sender_endpoint_,
+[this] (boost::system::error_code ec, std::size_t recvd_bytes) {
+    my_udp_send();
+});
+
+```
+
+Client:
+```
+// Define the same structure
+typedef struct test_s {
+	int code;
+	float info1;
+	char info2[100];
+} test_t;
+
+.
+.
+.
+
+ssize_t rByte = recvfrom(sockfd, bufferRecv, sizeof(bufferRecv), 0, (struct sockaddr *)&cliAddr,&cLen);
+
+test_t infos;
+memcpy(&infos, bufferRecv, sizeof(infos));
+
+std::cout << infos.code << std::endl;
+std::cout << infos.info1 << std::endl;
+std::cout << infos.info2 << std::endl;
+
+```

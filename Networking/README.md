@@ -97,11 +97,10 @@ std::cout << infos.info2 << std::endl;
 ```
 
 # Base Structure :
-
-Struct baseStruct {
-    int code_
-    void *data_
-}
+    Struct baseStruct {
+        int code_
+        void *data_
+    }
 
 # TCP
 

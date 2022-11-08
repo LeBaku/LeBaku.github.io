@@ -96,43 +96,67 @@ std::cout << infos.info2 << std::endl;
 
 ```
 
-# PROTOCOL
+# Base Structure :
 
 Struct baseStruct {
     int code_
     void *data_
 }
 
-# TCP :
+# TCP
+
     from Client to Server
+
         100 Join server
+    
         101 Client is Ready
+    
         102 Client has finished loading
+    
         103 Debug print to console
 
+
     from Server to client
+
         200 Everyone is Ready
+
         201 Everyone has finished loading
+
         202 Player x left
+
         203 Player x Ready
+
         204 Player x joined
+
         205 Clients must start loading
+
         206 Debug print to console
     
-# UDP :
+# UDP
+
     from Client to Server
+
         300 Update client inputs
+
         301 Debug print to console
-        
+
+
    from Server to Client
+
         400 Sprite List to draw
+
         401 Game Over
+
         402 Debug print to console
         
-# Associated structs :
+# Associated structs
 
 100, 101, 102, 200, 201 : data_ is NULL
+
 103, 206, 301, 402 : data_ is a char *
+
 202, 203, 204 : data_ is an int
+
 205, 400 : data_ is Entity *
+
 401 : data_ is long *

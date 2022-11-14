@@ -44,35 +44,6 @@ Now in order to start the client you'll have to run the command :
 
 # TCP
     
-Input struct <br>
-    ```
-    typedef struct __attribute__ ((packed)) client_inputs_s { <br>
-        int _code; <br>
-        bool inputs[100]; <br>
-    } client_inputs_t; 
-    ``` <br>
-Sprite infos struct <br>
-    ```
-    typedef struct sprite_infos_s { <br>
-        float x; <br>
-        float y; <br>
-        float scX; <br>
-        float scY; <br>
-        int width; <br>
-        int height; <br>
-        int left; <br>
-        int top; <br>
-        unsigned char idPath; <br>
-        bool isSfx; <br>
-    } sprite_infos_t; <br>
-    ```
-Data to send to client struct <br>
-    ```
-    typedef struct  __attribute__ ((packed)) data_to_send_s { <br>
-        int _code; <br>
-        sprite_infos_t _infos[500]; <br>
-    } data_to_send_t; <br>
-    ```
     from Client to Server
 
         100 Join server
@@ -102,6 +73,35 @@ Data to send to client struct <br>
     
 # UDP
 
+Input struct <br>
+    
+    typedef struct __attribute__ ((packed)) client_inputs_s { <br>
+        int _code; <br>
+        bool inputs[100]; <br>
+    } client_inputs_t; 
+     <br>
+Sprite infos struct <br>
+    
+    typedef struct sprite_infos_s { <br>
+        float x; <br>
+        float y; <br>
+        float scX; <br>
+        float scY; <br>
+        int width; <br>
+        int height; <br>
+        int left; <br>
+        int top; <br>
+        unsigned char idPath; <br>
+        bool isSfx; <br>
+    } sprite_infos_t; <br>
+   
+Data to send to client struct <br>
+    
+    typedef struct  __attribute__ ((packed)) data_to_send_s { <br>
+        int _code; <br>
+        sprite_infos_t _infos[500]; <br>
+    } data_to_send_t; <br>
+    
     from Client to Server
 
         300 Update client inputs

@@ -73,14 +73,14 @@ Now in order to start the client you'll have to run the command :
     
 # UDP
 
-Input struct
+>Input struct
     
     typedef struct __attribute__ ((packed)) client_inputs_s {
         int _code;
         bool inputs[100];
     } client_inputs_t; 
 
-Sprite infos struct
+>Sprite infos struct
     
     typedef struct sprite_infos_s {
         float x;
@@ -95,7 +95,7 @@ Sprite infos struct
         bool isSfx;
     } sprite_infos_t;
    
-Data to send to client struct
+>Data to send to client struct
     
     typedef struct  __attribute__ ((packed)) data_to_send_s { 
         int _code; 

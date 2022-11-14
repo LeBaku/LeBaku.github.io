@@ -2,10 +2,9 @@
 
 ## Linux
 
-> ./install <br>
-> ./bin/rtype-server [port]
-
-> ./bin/rtype-client
+> ./install <br> 
+> ./bin/rtype-server [port] <br>
+> ./bin/rtype-client 
 
 ## Windows
 

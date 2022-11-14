@@ -1,10 +1,12 @@
 # Installation
 
-## Linux
+## Linux
 
 > ./install <br>
-> ./bin/rtype-client [serv-ip] [port] [name]
+> ./bin/rtype-server [port]
+> ./bin/rtype-client
 
 ## Windows
 
-> Work in progress!
+> ./bin/rtype-server [port]
+> ./bin/rtype-client

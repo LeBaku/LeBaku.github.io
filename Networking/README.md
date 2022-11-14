@@ -34,11 +34,11 @@ If you want to play with an other computer on the same Network, you want to know
 
 > ip -4 addr
 
-You're looking for an IP starting by : 192.168.
+You're looking for an IP with the attributes : <BROADCAST,MULTICAST,UP,LOWER_UP> 
 
 Now in order to start the client you'll have to run the command :
 
-> ./bin/r-type_client <IPv4<Ip>> <port_used_by_server<port>>
+> ./bin/r-type_client
 
 -----------------------------------------------------------------
 

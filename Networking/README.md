@@ -42,14 +42,37 @@ Now in order to start the client you'll have to run the command :
 
 -----------------------------------------------------------------
 
-# Base Structure :
-    Struct baseStruct {
-        int code_
-        void *data_
-    }
-
 # TCP
-
+    
+    Input struct
+    ```
+    typedef struct __attribute__ ((packed)) client_inputs_s {
+        int _code;
+        bool inputs[100];
+    } client_inputs_t;
+    ```
+    Sprite infos struct
+    ```
+    typedef struct sprite_infos_s {
+        float x;
+        float y;
+        float scX;
+        float scY;
+        int width;
+        int height;
+        int left;
+        int top;
+        unsigned char idPath;
+        bool isSfx;
+    } sprite_infos_t;
+    ```
+    Data to send to client struct
+    ```
+    typedef struct  __attribute__ ((packed)) data_to_send_s {
+        int _code;
+        sprite_infos_t _infos[500];
+    } data_to_send_t;
+    ```
     from Client to Server
 
         100 Join server

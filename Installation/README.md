@@ -8,5 +8,5 @@
 
 ## Windows
 
-> ./bin/rtype-server [port]
+> ./bin/rtype-server [port] <br>
 > ./bin/rtype-client

@@ -44,34 +44,34 @@ Now in order to start the client you'll have to run the command :
 
 # TCP
     
-Input struct
+Input struct <br>
     ```
-    typedef struct __attribute__ ((packed)) client_inputs_s {
-        int _code;
-        bool inputs[100];
-    } client_inputs_t;
+    typedef struct __attribute__ ((packed)) client_inputs_s { <br>
+        int _code; <br>
+        bool inputs[100]; <br>
+    } client_inputs_t; 
+    ``` <br>
+Sprite infos struct <br>
     ```
-Sprite infos struct
+    typedef struct sprite_infos_s { <br>
+        float x; <br>
+        float y; <br>
+        float scX; <br>
+        float scY; <br>
+        int width; <br>
+        int height; <br>
+        int left; <br>
+        int top; <br>
+        unsigned char idPath; <br>
+        bool isSfx; <br>
+    } sprite_infos_t; <br>
     ```
-    typedef struct sprite_infos_s {
-        float x;
-        float y;
-        float scX;
-        float scY;
-        int width;
-        int height;
-        int left;
-        int top;
-        unsigned char idPath;
-        bool isSfx;
-    } sprite_infos_t;
+Data to send to client struct <br>
     ```
-Data to send to client struct
-    ```
-    typedef struct  __attribute__ ((packed)) data_to_send_s {
-        int _code;
-        sprite_infos_t _infos[500];
-    } data_to_send_t;
+    typedef struct  __attribute__ ((packed)) data_to_send_s { <br>
+        int _code; <br>
+        sprite_infos_t _infos[500]; <br>
+    } data_to_send_t; <br>
     ```
     from Client to Server
 

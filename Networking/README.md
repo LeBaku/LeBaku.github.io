@@ -44,7 +44,7 @@ Now in order to start the client you'll have to run the command :
 
 # TCP
     
-    from Client to Server
+From Client to Server
 
         100 Join server
     
@@ -55,7 +55,7 @@ Now in order to start the client you'll have to run the command :
         103 Debug print to console
 
 
-    from Server to client
+From Server to client
 
         200 Everyone is Ready
 
@@ -73,14 +73,14 @@ Now in order to start the client you'll have to run the command :
     
 # UDP
 
->Input struct
+Input struct
     
     typedef struct __attribute__ ((packed)) client_inputs_s {
         int _code;
         bool inputs[100];
     } client_inputs_t; 
 
->Sprite infos struct
+Sprite infos struct
     
     typedef struct sprite_infos_s {
         float x;
@@ -95,36 +95,24 @@ Now in order to start the client you'll have to run the command :
         bool isSfx;
     } sprite_infos_t;
    
->Data to send to client struct
+Data to send to client struct
     
     typedef struct  __attribute__ ((packed)) data_to_send_s { 
         int _code; 
         sprite_infos_t _infos[500]; 
     } data_to_send_t; 
     
-from Client to Server
+From Client to Server
 
         300 Update client inputs
 
         301 Debug print to console
 
 
-from Server to Client
+From Server to Client
 
         400 Sprite List to draw
 
         401 Game Over
 
         402 Debug print to console
-        
-# Associated structs
-
-100, 101, 102, 200, 201 : data_ is NULL
-
-103, 206, 301, 402 : data_ is a char *
-
-202, 203, 204 : data_ is an int
-
-205, 400 : data_ is Entity *
-
-401 : data_ is long *

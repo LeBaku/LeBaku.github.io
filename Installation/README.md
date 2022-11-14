@@ -4,6 +4,7 @@
 
 > ./install <br>
 > ./bin/rtype-server [port]
+
 > ./bin/rtype-client
 
 ## Windows

@@ -98,7 +98,7 @@ GravityComponent - Adds gravity to an Entity
     float getG()
     std::string getNameComp()
     void setMovX(float movX)
-void setMovY(float movY)
+    void setMovY(float movY)
     
 MoveComponent - Handles movement for an Entity 
 

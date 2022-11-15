@@ -24,7 +24,6 @@ You can then add entities using <b>manager.AddEntity()</b> and you attach compon
 ![](../media/Diagram_ECS.png)
 
 <br /><br />
-
 # Add your own Event
 
 You can custom your own event with inheritance of EventComponent
@@ -47,151 +46,228 @@ class MyEvent : public EventComponent {
         void onDeath(EntityManager& admin);
         void onRightScreen(EntityManager& admin);
         void onLeftScreen(EntityManager& admin);
+        void onColision(ComponentR thisComp, ComponentR colidComp, EntityType colideType); 
 
     private:
         std::vector<std::shared_ptr<IComponent>>& _siblings;
 };
 ```
-You now have acces at ```onDeath()``` ```onRightScreen()```  ```onLeftScreen()``` 
+You now have acces at ```onDeath()``` ```onRightScreen()```  ```onLeftScreen()``` ```onColision()``` 
 
 <br /><br />
 
 # Components
 
-AnimComponent - Handles Animations
+## AnimComponent
 
-    AnimComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
-    void setAnime(bool isAnimated)
-    bool getAnime()
-    void setIdlAnim(sf::IntRect rect, int nbFrame, float frequency, bool isLoop)
-    void setKeysAnim(sf::Keyboard::Key key, sf::IntRect rect, int nbFrame, float frequency, bool isOnce, bool isMaintain)
-    void setCurrAnim(AnimInfos curr)
-    void setCurrAnim()
-    std::vector<sf::Keyboard::Key> getKeysAnim()
-    void wantKeysAnim(sf::Keyboard::Key key, bool wantToAnim)
-    std::map<sf::Keyboard::Key, AnimInfos> getKeysInfos()
-    AnimInfos& getCurrAnimInfos()
+Constructor
+```
+AnimComponent()
+```
 
-ColisionComponent - Handles Collisions
+Set if you want to animate your sprite, ```True``` by default
+```
+void setAnime(bool isAnimated)
+bool getAnime()
+```
 
-    ColisionComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
-    ColisionComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin, EntityType type)
-    
-    void setEntityType(EntityType type)
-    EntityType getEntityType()
-    
-EventComponent - Handles Events
+Set the idle Animation <br />
+isLoop ```False``` make the animation one time
+```
+void setIdlAnim(sf::IntRect rect, int nbFrame, float frequency, bool isLoop)
+```
 
-    std::string getNameComp()
-    std::vector<std::shared_ptr<IComponent>>& getSiblings()
-    void onDeath()
-    void onRightScreen()
-    void onLeftScreen()
-    void onColision(ComponentR, ComponentR, EntityType)
-    void setPlayerId(int
-    int getPlayerId()
-    
-GravityComponent - Adds gravity to an Entity
+Allows to setup a specific animation for any key <br />
+isOnce on ```True``` make the animation one time if the key is pressed once
+isMaintain on ```True``` make the animation one time and stay on the last animation frame if the player hold the key
+```
+void setKeysAnim(sf::Keyboard::Key key, sf::IntRect rect, int nbFrame, float frequency, bool isOnce, bool isMaintain)
+```
 
-    GravityComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
-    
-    float getG()
-    std::string getNameComp()
-    void setMovX(float movX)
-    void setMovY(float movY)
-    
-MoveComponent - Handles movement for an Entity 
 
-    MoveComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
-    
-    void setMovX(float movX)
-    void setMovY(float movY)
-    float getMovX()
-    float getMovY()
-    
-PositionComponent - Needed for an Entity to have a position
+## ColisionComponent
 
-    PositionComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
-    PositionComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin, float x, float y)
-    float getX()
-    float getY()
-    void setPos(float x, float y)
-    std::string getNameComp()
-    
-SceneComponent - Handles scenes
-    
-    SceneComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
-    SceneComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin, int idScene)
-    void setIdScene(int idScene)
-    int getIdScene()
-    std::string getNameComp()
-    
-ShootComponent - Allows an Entity to generate Entities
+EntityType can be ```ALLY``` ```NEUTRAL``` ```ENEMY``` <br />
+Without any precision the type is set to ```NEUTRAL```
+```
+ColisionComponent()
+ColisionComponent(EntityType type)
+```
 
-    ShootComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin, std::string path)
-    
-    std::string getPath()
-    sf::Time getTimeBeforeLastShoot()
-    float getShootPerSecond()
-    float getSize()
-    bool getWantToShoot()
-    void setSize(float size)
-    void setShootPerSecond(float shootPerSec)
-    void setShootTime()
-    void setWantToShoot(bool state)
-    void resetShootTime()
-    
-SoundComponent - Handles sounds
+```
+void setEntityType(EntityType type)
+EntityType getEntityType()
+```
 
-    SoundComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
     
-    std::string getNameComp()
-    std::vector<std::shared_ptr<IComponent>>& getSiblings()
-    void setSoundKey(sf::Keyboard::Key key, std::string path)
-    void setSoundDeath(std::string path)
-    void setSoundDeath(std::string path)
-    void playSoundKeyboard(sf::Keyboard::Key key)
-    void playSoundDeath()
-    void playSoundShoot()
-    void setSoundShoot(std::string path)
-    void setPathPlaying(std::string path)
-    std::string getPathPlaying()
-    
-TextureSpriteComp
+## GravityComponent
 
-    TextureSpriteComp(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin, std::string path)
+Adds gravity to an Entity
+```
+GravityComponent()
+```
     
-    void setTextureRect(sf::IntRect newIntRect)
-    void setScale(float scX, float scY)
-    sf::Vector2f getRealSize()
-    sf::Vector2f getScale()
-    sf::IntRect getTextRect()
-    std::string getPath()
-    sf::Sprite& getSprite()
-    std::string getNameComp()
-    std::vector<std::shared_ptr<IComponent>>& getSiblings()
+## MoveComponent
 
-VectorComponent - Handles vectors
+Handles movement for an Entity 
+```
+MoveComponent()
+```
 
-    VectorComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
-    VectorComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin, float vecX, float vecY)
+Set and get the direction of the moves
+```
+void setMovX(float movX)
+void setMovY(float movY)
+float getMovX()
+float getMovY()
+```
     
-    float getVectorX()
-    float getVectorY()
-    void setVectorX(float x)
-    void setVectorY(float y)
-    std::string getNameComp()
-    
-VelocityComponent - Handles velocities
+## PositionComponent
 
-    VelocityComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
-    VelocityComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin, float velX, float velY)
+Needed for an Entity to have a position <br />
+Without any precision ```x``` and ```y``` are set to ```0```;
+```
+PositionComponent()
+PositionComponent(float x, float y)
+```
+
+Set and get the position
+```
+float getX()
+float getY()
+void setPos(float x, float y)
+```
     
-    float getVelocityX()
-    float getVelocityY()
-    void setVelocityX(float x)
-    void setVelocityY(float y)
-    std::string getNameComp()
+## SceneComponent
+
+Without any precision the idScene is set to -1, which mean the entity is handle everywhere in the game 
+```
+SceneComponent()
+SceneComponent(int idScene)
+```
+
+Set and get and idScene
+```
+void setIdScene(int idScene)
+int getIdScene()
+```
+
+## ShootComponent
+
+Allows an Entity to generate shoot Entities
+```
+ShootComponent(std::string path)
+```
+
+Get the entity path
+```
+std::string getPath()
+```
+
+Set and get the shootPerSecond
+```
+void setShootPerSecond(float shootPerSec)
+float getShootPerSecond()
+```
+
+Set and get the size of the shoot
+```
+void setSize(float size)
+float getSize()
+```
+
+    
+## SoundComponent
+
+```
+SoundComponent()
+```
+
+Set the sound id a certain key is pressed
+```
+void setSoundKey(sf::Keyboard::Key key, std::string path)
+```
+
+Set the sound if the entity is deleted
+```
+void setSoundDeath(std::string path)
+```
+
+Seth the sound if the entity is shooting
+```
+void setSoundShoot(std::string path)
+```
+
+Play any sounds (this is handle by the system but the person can use it anyway)
+```
+void playSoundKeyboard(sf::Keyboard::Key key)
+void playSoundDeath()
+void playSoundShoot()
+```
+    
+## TextureSpriteComp
+
+```
+TextureSpriteComp(std::string path)
+```
+
+Set and get the TextureRect
+```
+void setTextureRect(sf::IntRect newIntRect)
+sf::IntRect getTextRect()
+```
+
+Set and get the scale
+```
+void setScale(float scX, float scY)
+sf::Vector2f getScale()
+```
+
+Get the real size of the sprite (with scale)
+```
+sf::Vector2f getRealSize()
+```
+
+Get the path of the texture
+``` 
+std::string getPath()
+```
+
+Get the SFML sprite
+```
+sf::Sprite& getSprite()
+```
+
+## VectorComponent
+
+Move the sprite with a vector
+```
+VectorComponent(float vecX, float vecY)
+```
+
+Get and set vector
+```
+float getVectorX()
+float getVectorY()
+void setVectorX(float x)
+void setVectorY(float y)
+```
+    
+## VelocityComponent
+
+Velocity of the sprite
+```
+VelocityComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin)
+VelocityComponent(std::vector<std::shared_ptr<IComponent>>& sibling, EntityManager& admin, float velX, float velY)
+```
+
+Get and set the velocity
+```
+float getVelocityX()
+float getVelocityY()
+void setVelocityX(float x)
+void setVelocityY(float y)
+```
     
 
 # Examples
